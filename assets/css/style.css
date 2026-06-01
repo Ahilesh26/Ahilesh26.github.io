@@ -55,7 +55,7 @@ h1,h2,h3,h4 { font-family: var(--ff-head); font-weight: 600; line-height: 1.15; 
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
 
 .nav__logo {
-  font-family: var(--ff-head); font-size: 1.05rem; font-weight: 600;
+  font-family: var(--ff-head); font-size: 1.5rem; font-weight: 600;
   color: var(--text); text-decoration: none; letter-spacing: -.01em;
 }
 .nav__logo span { color: var(--teal); }
