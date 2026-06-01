@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visual Servoing — Ahilesh Rajaram</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+<div class="stripe"></div>
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav__logo">Ahilesh<span>.</span></a>
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav__drop">
+        <a href="index.html#projects">Projects <svg class="caret" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="2,3 5,7 8,3"/></svg></a>
+        <ul class="nav__drop-menu">
+          <li><a href="bionic-arm.html">Bionic Arm</a></li>
+          <li><a href="visual-servoing.html">Visual Servoing</a></li>
+          <li><a href="buoyancy-robot.html">Buoyancy Robot</a></li>
+          <li><a href="anytime-d-star.html">Modified Anytime D*</a></li>
+          <li><a href="robot-handwriting.html">Robot Handwriting</a></li>
+          <li><a href="feeding-robot.html">Feeding Robot</a></li>
+          <li><a href="crest.html">CREST Exoskeleton</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="bionic-arm.html">Bionic Arm</a>
+  <a href="visual-servoing.html">Visual Servoing</a>
+  <a href="buoyancy-robot.html">Buoyancy Robot</a>
+  <a href="anytime-d-star.html">Modified Anytime D*</a>
+  <a href="robot-handwriting.html">Robot Handwriting</a>
+  <a href="feeding-robot.html">Feeding Robot</a>
+  <a href="crest.html">CREST Exoskeleton</a>
+</div>
+
+<div class="proj-header">
+  <div class="wrap-sm">
+    <a href="index.html" class="proj-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg> All Projects</a>
+    <div class="proj-chips">
+      <span class="proj-cat">Simulation</span>
+      <span class="proj-cat">Visual Servoing</span>
+      <span class="proj-cat">CNC Automation</span>
+    </div>
+    <h1 class="proj-title">Visual Servoing Simulation for Automated Part Handling</h1>
+  </div>
+</div>
+
+<div class="proj-body">
+  <div class="wrap-sm">
+    <div class="prose">
+
+      <p>Machine tending sounds mundane until you realise how much of precision manufacturing depends on it. The moment a CNC machine finishes a cycle, something has to pick up the finished part, inspect it, load a new blank, and close the door — consistently, accurately, thousands of times a shift. I set out to simulate a complete robotic CNC tending system not because a real robot was available, but because simulation is how you validate ideas before spending money on hardware. Build it in software first. Break it in software first. Understand exactly where it fails — then build the real thing.</p>
+
+      <p>The core challenge was visual servoing: using live camera feedback to continuously correct the robot's position rather than relying on a pre-programmed open-loop trajectory. In a real factory, parts arrive with tolerances. Pallets shift. Fixtures wear. Visual servoing turns those imprecisions from failures into corrections.</p>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_3ffd54d925794d74958aea0e9ba9dbfd~mv2.png/v1/fill/w_497,h_312,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_3ffd54d925794d74958aea0e9ba9dbfd~mv2.png" alt="Simulation environment"/>
+      </div>
+
+      <h2>System Design</h2>
+
+      <p>An adaptive gripper was designed capable of handling cylindrical billets, prismatic blanks, and finished parts without a tool change — parallel jaw geometry with compliant fingertips, sized to the part family while maintaining repeatability for tight-tolerance loading.</p>
+
+      <p>Image-based visual servoing (IBVS) was chosen over position-based approaches. Rather than reconstructing the 3D position of the part and computing a trajectory, IBVS minimises the error directly in the image plane. The robot moves until the observed feature positions match a set of target features — sidestepping coordinate frame calibration errors entirely.</p>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_ecdecaeb40104e52a262073985b524dc~mv2.png/v1/fill/w_474,h_312,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_ecdecaeb40104e52a262073985b524dc~mv2.png" alt="Adaptive gripper design"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_75bacabca99d46e482121648d63df6ba~mv2.png/v1/fill/w_444,h_312,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_75bacabca99d46e482121648d63df6ba~mv2.png" alt="Feature detection"/>
+      </div>
+
+      <h2>Sensory Architecture</h2>
+
+      <p>A wrist-mounted camera provides an eye-in-hand configuration — always relative to the grasp target. Feature extraction uses Harris corner detection and blob centroid tracking. The Jacobian relating image-space velocities to camera-frame velocities is computed analytically for each set of features, allowing the controller to invert it and drive the robot in Cartesian space at each timestep. Singular configurations are handled with a damped pseudo-inverse.</p>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_23abeb545ee34b79bc221999f9b1fb9a~mv2.png/v1/fill/w_410,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_23abeb545ee34b79bc221999f9b1fb9a~mv2.png" alt="IBVS control loop"/>
+      </div>
+
+      <h2>Task Sequencing</h2>
+
+      <p>The full tending cycle is orchestrated by a finite state machine: approach → detect → align → grasp → retract → inspect → load → confirm → ready. Each transition is conditioned on both visual confirmation and simulated force data. If visual alignment fails to converge within a timeout, the system flags the part and requests operator intervention — a deliberate choice to avoid silently proceeding with a misaligned workpiece.</p>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_0d6f9888888b4e0084149ff4f12173a0~mv2.png/v1/fill/w_427,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_0d6f9888888b4e0084149ff4f12173a0~mv2.png" alt="State machine"/>
+      </div>
+
+      <blockquote>The IBVS controller works beautifully when the initial pose error is small, but degenerates badly when the camera starts far from the target. The fix was a two-phase approach: coarse open-loop approach to get within the convergence basin, then hand off to IBVS for the final precise alignment.</blockquote>
+
+      <div class="tags">
+        <span class="tag">ROS 2</span><span class="tag">Image-Based Visual Servoing</span><span class="tag">Gazebo</span>
+        <span class="tag">OpenCV</span><span class="tag">Python</span><span class="tag">Jacobian Control</span>
+      </div>
+    </div>
+
+    <nav class="proj-nav">
+      <a href="bionic-arm.html" class="pnav">
+        <span class="pnav__dir">← Previous</span>
+        <span class="pnav__name">Computer Vision Bionic Arm</span>
+      </a>
+      <a href="buoyancy-robot.html" class="pnav pnav--next">
+        <span class="pnav__dir">Next →</span>
+        <span class="pnav__name">Articulated Buoyancy Robot</span>
+      </a>
+    </nav>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <a href="index.html" class="footer__logo">Ahilesh<span>.</span></a>
+    <p class="footer__meta">USA &nbsp;&middot;&nbsp; ahileshram2610@gmail.com</p>
+    <ul class="footer__links">
+      <li><a href="https://www.linkedin.com/in/ahilesh-ram-14b94921a" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:ahileshram2610@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

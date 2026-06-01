@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feeding Robot — Ahilesh Rajaram</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+<div class="stripe"></div>
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav__logo">Ahilesh<span>.</span></a>
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav__drop">
+        <a href="index.html#projects">Projects <svg class="caret" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="2,3 5,7 8,3"/></svg></a>
+        <ul class="nav__drop-menu">
+          <li><a href="bionic-arm.html">Bionic Arm</a></li>
+          <li><a href="visual-servoing.html">Visual Servoing</a></li>
+          <li><a href="buoyancy-robot.html">Buoyancy Robot</a></li>
+          <li><a href="anytime-d-star.html">Modified Anytime D*</a></li>
+          <li><a href="robot-handwriting.html">Robot Handwriting</a></li>
+          <li><a href="feeding-robot.html">Feeding Robot</a></li>
+          <li><a href="crest.html">CREST Exoskeleton</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="bionic-arm.html">Bionic Arm</a>
+  <a href="visual-servoing.html">Visual Servoing</a>
+  <a href="buoyancy-robot.html">Buoyancy Robot</a>
+  <a href="anytime-d-star.html">Modified Anytime D*</a>
+  <a href="robot-handwriting.html">Robot Handwriting</a>
+  <a href="feeding-robot.html">Feeding Robot</a>
+  <a href="crest.html">CREST Exoskeleton</a>
+</div>
+
+<div class="proj-header">
+  <div class="wrap-sm">
+    <a href="index.html" class="proj-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg> All Projects</a>
+    <div class="proj-chips">
+      <span class="proj-cat">Assistive Robotics</span>
+      <span class="proj-cat">Impedance Control</span>
+      <span class="proj-cat">ROS 2</span>
+      <a href="https://github.com/Ahilesh26/Assistive_Feeding_Robot_with_Impedence_Control.git" class="gh-link" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        View on GitHub
+      </a>
+    </div>
+    <h1 class="proj-title">Assistive Feeding Robot with Impedance Safety</h1>
+  </div>
+</div>
+
+<div class="proj-body">
+  <div class="wrap-sm">
+    <div class="prose">
+
+      <p>Designing a robot that operates in direct physical contact with a human being is a fundamentally different engineering challenge from designing one that works in a factory cage. In a factory, a collision is a fault to be avoided. In assistive robotics, contact is the whole point — and the question is not whether the robot will touch the person, but how it will respond when it does.</p>
+
+      <p>The target population is individuals with upper-limb motor impairments — ALS, high cervical spinal cord injury, muscular dystrophy — where the person has full cognitive function but cannot bring food to their own mouth. Current fixed-trajectory feeding robots don't respond to the unexpected: a head movement, a spill, a user flinching. Impedance control changes that.</p>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_7f858c217dde43e388708d3a616b0beb~mv2.png/v1/fill/w_465,h_261,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_7f858c217dde43e388708d3a616b0beb~mv2.png" alt="Full feeding robot system"/>
+      </div>
+
+      <h2>What Impedance Control Actually Means</h2>
+
+      <p>A position-controlled robot follows a trajectory regardless of the forces it encounters — tell it to move to (x, y, z) and it will, even if there's a face in the way. An impedance-controlled robot instead regulates the relationship between force and displacement: it behaves like a virtual spring-damper system. If something pushes back, the robot yields in proportion to that force rather than fighting through it. You can make the impedance asymmetric — low stiffness on approach, higher stiffness at the delivery point.</p>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_93ec85d0fafe4c618cf21c4a4e0656c4~mv2.png/v1/fill/w_276,h_271,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screenshot%202025-12-11%20231738.png" alt="Impedance control block diagram"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_706e09ff391c457590d6622c89e30563~mv2.png/v1/fill/w_380,h_366,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_706e09ff391c457590d6622c89e30563~mv2.png" alt="Force response during contact"/>
+      </div>
+
+      <h2>System Architecture</h2>
+
+      <p>The robot is a 6-DOF manipulator running a ROS 2 control stack. A wrist-mounted force/torque sensor provides contact feedback. A secondary safety layer monitors the sensor at 500 Hz and triggers a soft stop if any force component exceeds 5N. Food detection uses a top-down camera and colour-segmentation pipeline to locate scoopable regions on the plate.</p>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_10acf5c7985047b4b6099cc2799c4bd7~mv2.png/v1/fill/w_309,h_374,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screenshot%202025-12-11%20233155.png" alt="ROS 2 node graph"/>
+      </div>
+
+      <blockquote>The hardest design decision was choosing the impedance parameters. Too stiff and the robot doesn't yield meaningfully. Too compliant and the fork wobbles at every perturbation. I ended up with a gain schedule: lower stiffness during approach, higher stiffness at the final delivery position.</blockquote>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_98d1713ca3fe4dbb81bc354208880e32~mv2.png/v1/fill/w_600,h_507,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_98d1713ca3fe4dbb81bc354208880e32~mv2.png" alt="Delivery accuracy results"/>
+      </div>
+
+      <div class="tags">
+        <span class="tag">ROS 2</span><span class="tag">Impedance Control</span>
+        <span class="tag">Force/Torque Sensing</span><span class="tag">Assistive Robotics</span>
+        <span class="tag">Python</span><span class="tag">C++</span>
+      </div>
+    </div>
+
+    <nav class="proj-nav">
+      <a href="robot-handwriting.html" class="pnav">
+        <span class="pnav__dir">← Previous</span>
+        <span class="pnav__name">Robot Handwriting</span>
+      </a>
+      <a href="crest.html" class="pnav pnav--next">
+        <span class="pnav__dir">Next →</span>
+        <span class="pnav__name">CREST Exoskeleton</span>
+      </a>
+    </nav>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <a href="index.html" class="footer__logo">Ahilesh<span>.</span></a>
+    <p class="footer__meta">USA &nbsp;&middot;&nbsp; ahileshram2610@gmail.com</p>
+    <ul class="footer__links">
+      <li><a href="https://www.linkedin.com/in/ahilesh-ram-14b94921a" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:ahileshram2610@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bionic Arm — Ahilesh Rajaram</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+
+<div class="stripe"></div>
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav__logo">Ahilesh<span>.</span></a>
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav__drop">
+        <a href="index.html#projects">Projects <svg class="caret" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="2,3 5,7 8,3"/></svg></a>
+        <ul class="nav__drop-menu">
+          <li><a href="bionic-arm.html">Bionic Arm</a></li>
+          <li><a href="visual-servoing.html">Visual Servoing</a></li>
+          <li><a href="buoyancy-robot.html">Buoyancy Robot</a></li>
+          <li><a href="anytime-d-star.html">Modified Anytime D*</a></li>
+          <li><a href="robot-handwriting.html">Robot Handwriting</a></li>
+          <li><a href="feeding-robot.html">Feeding Robot</a></li>
+          <li><a href="crest.html">CREST Exoskeleton</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="bionic-arm.html">Bionic Arm</a>
+  <a href="visual-servoing.html">Visual Servoing</a>
+  <a href="buoyancy-robot.html">Buoyancy Robot</a>
+  <a href="anytime-d-star.html">Modified Anytime D*</a>
+  <a href="robot-handwriting.html">Robot Handwriting</a>
+  <a href="feeding-robot.html">Feeding Robot</a>
+  <a href="crest.html">CREST Exoskeleton</a>
+</div>
+
+<div class="proj-header">
+  <div class="wrap-sm">
+    <a href="index.html" class="proj-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
+      All Projects
+    </a>
+    <div class="proj-chips">
+      <span class="proj-cat">Computer Vision</span>
+      <span class="proj-cat">Prosthetics</span>
+      <span class="proj-cat">Servo Control</span>
+      <a href="https://github.com/Ahilesh26/Computer-Vision-Controlled-Bionic-Arm" class="gh-link" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        View on GitHub
+      </a>
+    </div>
+    <h1 class="proj-title">Computer Vision Controlled Bionic Arm</h1>
+  </div>
+</div>
+
+<div class="proj-body">
+  <div class="wrap-sm">
+    <div class="prose">
+
+      <p>I've always been fascinated by the idea that your hand is the most sophisticated tool you'll ever own — twenty-seven bones, thirty-five muscles, and a feedback loop so finely tuned you can thread a needle without thinking. This project started from a simple question: what if a robot could read your hand in real time and mirror exactly what you're doing? Not a button interface, not a preset gesture menu — continuous, fluid mirroring of intent, the moment you move.</p>
+
+      <p>The result is a system where a camera tracks every landmark of a human hand at 30 frames per second, translates that geometry into servo commands, and drives a 3D-printed robotic hand with enough fidelity to replicate individual finger movements.</p>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_f3cd0d257c48486f8972dcb41bc0c6e7~mv2.jpg/v1/fill/w_204,h_369,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_f3cd0d257c48486f8972dcb41bc0c6e7~mv2.jpg" alt="Bionic arm physical prototype"/>
+      </div>
+
+      <p>In a simple definition, the robotic arm uses a camera as its primary sensor — a standard webcam feeding into a MediaPipe Hands inference pipeline running on a host computer. The pipeline detects 21 hand landmarks per frame, calculates the angular relationships between them, and maps those angles directly onto five servo motors driving the robotic fingers. The entire loop — pixel capture to physical actuation — runs in under 50ms.</p>
+
+      <h2>Mechanical Design</h2>
+
+      <p>The inspiration was the human hand itself. The palm is one whole structure — a rigid, interconnected base — while the fingers are segmented, each joint acting as its own degree of freedom. The fingers are built from printed PLA segments connected by small pivot pins. Each finger has a single servo at the base, pulling a nylon tendon that runs the length of the digit to curl the finger closed. A small elastic band handles the return — passive extension, active flexion, mirroring biological extensor tendons.</p>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_4688f08eac63410f830bdcad9d2785f0~mv2.png/v1/fill/w_204,h_369,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_4688f08eac63410f830bdcad9d2785f0~mv2.png" alt="Finger tendon routing"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_f714c234139d4875ab1fad8e24925ac8~mv2.png/v1/fill/w_212,h_369,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_f714c234139d4875ab1fad8e24925ac8~mv2.png" alt="Servo layout"/>
+      </div>
+
+      <h2>Electronics &amp; Control</h2>
+
+      <p>An Arduino Uno acts as the controller — it receives processed joint-angle data from the host computer over serial, translates those values into PWM duty cycles, and drives the five SG90 micro-servos in near-real time. The host computer handles all the computationally expensive inference work while the Arduino handles only the time-critical actuation.</p>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_5326062a6dab454296a6c55e578954b0~mv2.png/v1/fill/w_195,h_369,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_5326062a6dab454296a6c55e578954b0~mv2.png" alt="Electronics wiring"/>
+      </div>
+
+      <h2>MediaPipe Pipeline</h2>
+
+      <p>MediaPipe Hands uses a two-stage ML pipeline: a palm detector followed by a landmark model that regresses 21 3D keypoints. From these I compute the flexion angle of each finger by taking the dot product of vectors along the proximal and distal segments. The five resulting angles are normalised to the servo operating range (0°–180°) and dispatched serially at each frame.</p>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_c186997c057e4620af4049539f71f6f0~mv2.png/v1/fill/w_600,h_273,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_c186997c057e4620af4049539f71f6f0~mv2.png" alt="MediaPipe landmark detection"/>
+      </div>
+
+      <blockquote>The biggest surprise was how much mechanical design mattered to the perception of naturalness. Adding a simple exponential smoothing filter to the servo commands made the whole hand feel alive in a way that no amount of tracking accuracy could have.</blockquote>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_ddcf01ef28934bbc814fe1dde60da116~mv2.png/v1/fill/w_600,h_199,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_ddcf01ef28934bbc814fe1dde60da116~mv2.png" alt="Servo angle data"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_70cb591439894d6abbcbc442de49c225~mv2.png/v1/fill/w_600,h_197,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_70cb591439894d6abbcbc442de49c225~mv2.png" alt="System performance"/>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">MediaPipe</span><span class="tag">Arduino</span>
+        <span class="tag">OpenCV</span><span class="tag">SG90 Servos</span><span class="tag">PLA 3D Print</span>
+      </div>
+    </div>
+
+    <nav class="proj-nav">
+      <div></div>
+      <a href="visual-servoing.html" class="pnav pnav--next">
+        <span class="pnav__dir">Next →</span>
+        <span class="pnav__name">Visual Servoing Simulation</span>
+      </a>
+    </nav>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <a href="index.html" class="footer__logo">Ahilesh<span>.</span></a>
+    <p class="footer__meta">USA &nbsp;&middot;&nbsp; ahileshram2610@gmail.com</p>
+    <ul class="footer__links">
+      <li><a href="https://www.linkedin.com/in/ahilesh-ram-14b94921a" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:ahileshram2610@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

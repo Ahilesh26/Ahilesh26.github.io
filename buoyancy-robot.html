@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buoyancy Robot — Ahilesh Rajaram</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+<div class="stripe"></div>
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav__logo">Ahilesh<span>.</span></a>
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav__drop">
+        <a href="index.html#projects">Projects <svg class="caret" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="2,3 5,7 8,3"/></svg></a>
+        <ul class="nav__drop-menu">
+          <li><a href="bionic-arm.html">Bionic Arm</a></li>
+          <li><a href="visual-servoing.html">Visual Servoing</a></li>
+          <li><a href="buoyancy-robot.html">Buoyancy Robot</a></li>
+          <li><a href="anytime-d-star.html">Modified Anytime D*</a></li>
+          <li><a href="robot-handwriting.html">Robot Handwriting</a></li>
+          <li><a href="feeding-robot.html">Feeding Robot</a></li>
+          <li><a href="crest.html">CREST Exoskeleton</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="bionic-arm.html">Bionic Arm</a>
+  <a href="visual-servoing.html">Visual Servoing</a>
+  <a href="buoyancy-robot.html">Buoyancy Robot</a>
+  <a href="anytime-d-star.html">Modified Anytime D*</a>
+  <a href="robot-handwriting.html">Robot Handwriting</a>
+  <a href="feeding-robot.html">Feeding Robot</a>
+  <a href="crest.html">CREST Exoskeleton</a>
+</div>
+
+<div class="proj-header">
+  <div class="wrap-sm">
+    <a href="index.html" class="proj-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg> All Projects</a>
+    <div class="proj-chips">
+      <span class="proj-cat">Underwater Robotics</span>
+      <span class="proj-cat">Fluid Mechanics</span>
+      <span class="proj-cat">Mechatronics</span>
+    </div>
+    <h1 class="proj-title">Articulated Underwater Buoyancy Robot</h1>
+  </div>
+</div>
+
+<div class="proj-body">
+  <div class="wrap-sm">
+    <div class="prose">
+
+      <p>Underwater robotics is a domain where all the constraints hit at once — pressure, waterproofing, buoyancy, limited communications — and you have to solve them simultaneously. There's no staging. You can't debug half of it in air and half in water. This project started from a research question: how do you build a robot that can navigate and take measurements inside confined bodies of water — industrial tanks, reservoirs, flooded shafts — where conventional ROVs are too bulky to manoeuvre?</p>
+
+      <p>The answer was buoyancy-driven propulsion paired with an articulated body that can change direction without thrusters. Buoyancy-driven gliders use a bladder or piston system to change their volume — and therefore density — relative to the surrounding fluid. They're extraordinarily energy-efficient compared to propeller-driven ROVs, and they produce almost no turbulence — critical in environments where flow disturbance would corrupt measurements.</p>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_aaf18d6029b84f1e916da97be4a95532~mv2.png/v1/fill/w_555,h_339,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_aaf18d6029b84f1e916da97be4a95532~mv2.png" alt="Full robot assembly"/>
+      </div>
+
+      <h2>Conceptual Design</h2>
+
+      <p>The chosen architecture is a three-segment body — a central buoyancy module flanked by two articulated tail sections. Each tail segment can rotate relative to the adjacent one, driven by a waterproofed servo. By coordinating these rotations the robot produces a gentle undulating motion that steers it left, right, or into a shallow banking turn — all without any thrusters creating disturbing flow.</p>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_fb55dea5a8e94c5fa68396e3339b5dcb~mv2.jpg/v1/fill/w_490,h_368,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_fb55dea5a8e94c5fa68396e3339b5dcb~mv2.jpg" alt="Articulated joint mechanism"/>
+      </div>
+
+      <h2>The Articulated Joint</h2>
+
+      <p>Each joint consists of a machined aluminium pivot pin running through two flanged segment caps, with a custom silicone gasket on the inner face. The servo sits inside the dry volume of one segment; its output shaft passes through the gasket-sealed bore to connect to the adjacent segment's cap. This keeps all electronics dry while allowing ±25° of rotation in the horizontal plane. After three prototype iterations, the final joint used a hollow pivot with the servo cable routed through the bore and potted at both exits with marine-grade epoxy.</p>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_382c28b8a1fa446ea76d896f55a90052~mv2.png/v1/fill/w_600,h_288,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_382c28b8a1fa446ea76d896f55a90052~mv2.png" alt="Joint cross-section"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_48d55fff4fdf4bea8f92ef47994b8948~mv2.png/v1/fill/w_643,h_281,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_48d55fff4fdf4bea8f92ef47994b8948~mv2.png" alt="Buoyancy module internals"/>
+      </div>
+
+      <h2>Buoyancy Engine &amp; Control</h2>
+
+      <p>The buoyancy engine is a syringe-style piston driven by a small DC motor and leadscrew. When the piston retracts it draws water into a flexible external bladder, increasing the vehicle's volume without changing its mass — effective density drops below water and the robot rises. A depth sensor (pressure transducer) closes the loop: the controller maintains a target depth by modulating piston position while the tail servos steer.</p>
+
+      <blockquote>Getting neutral buoyancy right took an embarrassingly long time. The robot is only neutrally buoyant when its total mass exactly equals the mass of the water it displaces — and that changes with water temperature, salinity, and any sensor payload you add. In the end I added a small trim weight tray that can be adjusted before each deployment.</blockquote>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_85377c6f2f114c4a80b8d2627a5a08bd~mv2.png/v1/fill/w_690,h_281,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_85377c6f2f114c4a80b8d2627a5a08bd~mv2.png" alt="Depth control performance"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_b53545ba058f450e8ff897644d9a91c6~mv2.png/v1/fill/w_511,h_281,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_b53545ba058f450e8ff897644d9a91c6~mv2.png" alt="Steering trajectory"/>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Buoyancy-Driven Glider</span><span class="tag">Waterproof Servo</span>
+        <span class="tag">PID Depth Control</span><span class="tag">Arduino</span>
+        <span class="tag">Pressure Transducer</span><span class="tag">SolidWorks</span>
+      </div>
+    </div>
+
+    <nav class="proj-nav">
+      <a href="visual-servoing.html" class="pnav">
+        <span class="pnav__dir">← Previous</span>
+        <span class="pnav__name">Visual Servoing Simulation</span>
+      </a>
+      <a href="anytime-d-star.html" class="pnav pnav--next">
+        <span class="pnav__dir">Next →</span>
+        <span class="pnav__name">Modified Anytime D*</span>
+      </a>
+    </nav>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <a href="index.html" class="footer__logo">Ahilesh<span>.</span></a>
+    <p class="footer__meta">USA &nbsp;&middot;&nbsp; ahileshram2610@gmail.com</p>
+    <ul class="footer__links">
+      <li><a href="https://www.linkedin.com/in/ahilesh-ram-14b94921a" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:ahileshram2610@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

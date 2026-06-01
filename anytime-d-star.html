@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anytime D* — Ahilesh Rajaram</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+<div class="stripe"></div>
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav__logo">Ahilesh<span>.</span></a>
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav__drop">
+        <a href="index.html#projects">Projects <svg class="caret" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="2,3 5,7 8,3"/></svg></a>
+        <ul class="nav__drop-menu">
+          <li><a href="bionic-arm.html">Bionic Arm</a></li>
+          <li><a href="visual-servoing.html">Visual Servoing</a></li>
+          <li><a href="buoyancy-robot.html">Buoyancy Robot</a></li>
+          <li><a href="anytime-d-star.html">Modified Anytime D*</a></li>
+          <li><a href="robot-handwriting.html">Robot Handwriting</a></li>
+          <li><a href="feeding-robot.html">Feeding Robot</a></li>
+          <li><a href="crest.html">CREST Exoskeleton</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="bionic-arm.html">Bionic Arm</a>
+  <a href="visual-servoing.html">Visual Servoing</a>
+  <a href="buoyancy-robot.html">Buoyancy Robot</a>
+  <a href="anytime-d-star.html">Modified Anytime D*</a>
+  <a href="robot-handwriting.html">Robot Handwriting</a>
+  <a href="feeding-robot.html">Feeding Robot</a>
+  <a href="crest.html">CREST Exoskeleton</a>
+</div>
+
+<div class="proj-header">
+  <div class="wrap-sm">
+    <a href="index.html" class="proj-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg> All Projects</a>
+    <div class="proj-chips">
+      <span class="proj-cat">Path Planning</span>
+      <span class="proj-cat">Algorithms</span>
+      <span class="proj-cat">Robotics</span>
+    </div>
+    <h1 class="proj-title">Modified Anytime D* Algorithm</h1>
+  </div>
+</div>
+
+<div class="proj-body">
+  <div class="wrap-sm">
+    <div class="prose">
+
+      <p>Path planning looks solved until you put a real robot in a real environment. A* finds the optimal path — but it finds it from scratch, and if an obstacle moves while the robot is already executing that path, A* has to start over. D* repairs the plan incrementally when the world changes, spending computation only where the graph has been affected. Neither algorithm makes a useful guarantee about how quickly they produce an initial solution — they either give you the optimal path or nothing.</p>
+
+      <p>Anytime algorithms break that deadlock. An anytime planner produces a valid (suboptimal) solution immediately, then uses remaining time to improve it. The question I explored: how much can you modify the Anytime D* framework to improve convergence speed in dynamic environments without sacrificing the bounded-suboptimality guarantee?</p>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_2f3fd1476bcb4f528e58a43893c16028~mv2.png/v1/fill/w_599,h_435,al_c,q_85,enc_avif,quality_auto/3a5ee8_2f3fd1476bcb4f528e58a43893c16028~mv2.png" alt="Algorithm comparison"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_d60ae61b427a43a8be49718bdd6185f2~mv2.png/v1/fill/w_600,h_428,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_d60ae61b427a43a8be49718bdd6185f2~mv2.png" alt="Path cost over time"/>
+      </div>
+
+      <h2>The Algorithm Family</h2>
+
+      <p>A* searches from start to goal using a heuristic to prioritise the most promising nodes — complete and optimal but not incremental. D* reverses the search direction and maintains a priority queue of inconsistent nodes; when edges change, only the affected subgraph needs re-evaluation. Anytime D* (AD*) combines D* Lite's incremental replanning with the anytime property: it uses an inflated heuristic (multiplied by a suboptimality factor ε &gt; 1) to find a quick initial solution, then decreases ε over time, refining toward optimality.</p>
+
+      <h2>The Modification</h2>
+
+      <p>The modification focuses on how ε is decreased during refinement. Standard AD* decreases ε by a fixed step at each iteration. My modification adapts the step size based on how many inconsistent nodes were resolved in the previous iteration. When many nodes are inconsistent (the environment is changing rapidly), the algorithm holds ε steady rather than forcing an expensive refinement pass. When the graph is stable, it decreases ε more aggressively. This adaptive scheduling reduces unnecessary recomputation in dynamic scenes while still converging when the environment stabilises.</p>
+
+      <div class="fig4">
+        <img src="https://static.wixstatic.com/media/3a5ee8_7c4f0a8d3e0c43de8da0bc5ea3a22da0~mv2.png/v1/fill/w_263,h_267,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_7c4f0a8d3e0c43de8da0bc5ea3a22da0~mv2.png" alt="A* no obstacles"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_1e26264d21e94d0ead0b7eccb9e2059c~mv2.png/v1/fill/w_263,h_267,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_1e26264d21e94d0ead0b7eccb9e2059c~mv2.png" alt="Anytime D* with obstacles"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_93273f4bede347258d3025edf4a842e0~mv2.png/v1/fill/w_263,h_259,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_93273f4bede347258d3025edf4a842e0~mv2.png" alt="D* with obstacles"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_4f3018b1a2bb422baf0025a5710b391a~mv2.png/v1/fill/w_319,h_324,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_4f3018b1a2bb422baf0025a5710b391a~mv2.png" alt="Anytime D* standard"/>
+      </div>
+
+      <h2>Results</h2>
+
+      <p>Benchmarked across 50 randomly generated grid maps with dynamic obstacle insertion at random intervals, the modified algorithm reduced total nodes expanded by an average of 18% compared to standard AD* in high-dynamism scenarios. In low-dynamism scenarios the difference was negligible — the correct behaviour; the adaptive schedule falls back to standard AD* when the environment is stable.</p>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_a9549d28f7c6480ba56fca662c7050a2~mv2.png/v1/fill/w_319,h_324,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_a9549d28f7c6480ba56fca662c7050a2~mv2.png" alt="Modified Anytime D* result"/>
+      </div>
+
+      <blockquote>Path planning algorithms are easy to understand in a textbook and surprisingly hard to implement correctly. A node that should be inconsistent but isn't will produce a path that looks plausible but isn't optimal — and those failures are nearly invisible without exhaustive ground-truth comparison.</blockquote>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Anytime D*</span><span class="tag">A* Search</span>
+        <span class="tag">Dynamic Path Planning</span><span class="tag">Graph Search</span><span class="tag">Heuristic Inflation</span>
+      </div>
+    </div>
+
+    <nav class="proj-nav">
+      <a href="buoyancy-robot.html" class="pnav">
+        <span class="pnav__dir">← Previous</span>
+        <span class="pnav__name">Articulated Buoyancy Robot</span>
+      </a>
+      <a href="robot-handwriting.html" class="pnav pnav--next">
+        <span class="pnav__dir">Next →</span>
+        <span class="pnav__name">Robot Handwriting</span>
+      </a>
+    </nav>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <a href="index.html" class="footer__logo">Ahilesh<span>.</span></a>
+    <p class="footer__meta">USA &nbsp;&middot;&nbsp; ahileshram2610@gmail.com</p>
+    <ul class="footer__links">
+      <li><a href="https://www.linkedin.com/in/ahilesh-ram-14b94921a" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:ahileshram2610@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

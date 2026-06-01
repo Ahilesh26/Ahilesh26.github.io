@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Robot Handwriting — Ahilesh Rajaram</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+<div class="stripe"></div>
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav__logo">Ahilesh<span>.</span></a>
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav__drop">
+        <a href="index.html#projects">Projects <svg class="caret" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="2,3 5,7 8,3"/></svg></a>
+        <ul class="nav__drop-menu">
+          <li><a href="bionic-arm.html">Bionic Arm</a></li>
+          <li><a href="visual-servoing.html">Visual Servoing</a></li>
+          <li><a href="buoyancy-robot.html">Buoyancy Robot</a></li>
+          <li><a href="anytime-d-star.html">Modified Anytime D*</a></li>
+          <li><a href="robot-handwriting.html">Robot Handwriting</a></li>
+          <li><a href="feeding-robot.html">Feeding Robot</a></li>
+          <li><a href="crest.html">CREST Exoskeleton</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="bionic-arm.html">Bionic Arm</a>
+  <a href="visual-servoing.html">Visual Servoing</a>
+  <a href="buoyancy-robot.html">Buoyancy Robot</a>
+  <a href="anytime-d-star.html">Modified Anytime D*</a>
+  <a href="robot-handwriting.html">Robot Handwriting</a>
+  <a href="feeding-robot.html">Feeding Robot</a>
+  <a href="crest.html">CREST Exoskeleton</a>
+</div>
+
+<div class="proj-header">
+  <div class="wrap-sm">
+    <a href="index.html" class="proj-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg> All Projects</a>
+    <div class="proj-chips">
+      <span class="proj-cat">Sign Language</span>
+      <span class="proj-cat">Computer Vision</span>
+      <span class="proj-cat">Trajectory Control</span>
+      <a href="https://github.com/Ahilesh26/Sign-Language-Detectiona-and-Robot-Handwriting" class="gh-link" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        View on GitHub
+      </a>
+    </div>
+    <h1 class="proj-title">Robot Handwriting for Sign Language</h1>
+  </div>
+</div>
+
+<div class="proj-body">
+  <div class="wrap-sm">
+    <div class="prose">
+
+      <p>This project sits at a cross-section of problems I find genuinely compelling: accessibility, gesture recognition, and physical robot output. The premise — build a system that watches a person signing in American Sign Language, identifies the letter they're forming, and instructs a robot arm to write that letter on paper — is straightforward. Building it required solving non-trivial problems at every layer: perception, classification, trajectory generation, and motion control.</p>
+
+      <p>ASL finger-spelling is the tractable subset of sign language recognition: each letter corresponds to a specific hand configuration, the camera can capture them from a fixed viewpoint, and the classification task is bounded to 26 classes.</p>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_01b2c15e3fcc41108738e67bbd94a509~mv2.jpg/v1/fill/w_355,h_355,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_01b2c15e3fcc41108738e67bbd94a509~mv2.jpg" alt="ASL detection"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_9bbb02e1644c4ac2b2dc0ec69ccc126f~mv2.jpg/v1/crop/x_0,y_440,w_899,h_946/fill/w_337,h_355,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_9bbb02e1644c4ac2b2dc0ec69ccc126f~mv2.jpg" alt="Training samples"/>
+      </div>
+
+      <h2>Detection Pipeline</h2>
+
+      <p>MediaPipe Hands extracts 21 3D landmarks per frame. From these I compute a feature vector of inter-joint angles and normalised distances, stripping out global hand position and scale so the classifier is invariant to where the hand sits in frame. The classifier is a small MLP trained on roughly 200 samples per class, captured across multiple lighting conditions and hand sizes. Inference runs at the full frame rate with compute to spare for downstream robot control.</p>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_e495c984438942d9a8a63ea6842becdc~mv2.jpg/v1/fill/w_358,h_269,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_e495c984438942d9a8a63ea6842becdc~mv2.jpg" alt="Confusion matrix"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_0a3be3c7c9aa4294b8b79e445a23cc8d~mv2.jpg/v1/crop/x_96,y_237,w_1339,h_883/fill/w_411,h_269,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_0a3be3c7c9aa4294b8b79e445a23cc8d~mv2.jpg" alt="Robot arm setup"/>
+      </div>
+
+      <h2>From Detection to Handwriting</h2>
+
+      <p>Once a letter is confidently classified — held stable for 1 second to avoid false triggers — the system looks up a pre-defined stroke trajectory for that letter. Each letter is stored as a sequence of Cartesian waypoints in the writing plane, parameterised along arc length. The robot arm interpolates between these using a cubic spline, giving smooth natural-looking strokes. Pen-up and pen-down commands coordinate with the trajectory at a fixed writing speed of 8mm/s along the stroke.</p>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_49ebe2ea9dbd43e98f1b1000ae2031b9~mv2.jpg/v1/crop/x_0,y_557,w_720,h_781/fill/w_270,h_293,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_49ebe2ea9dbd43e98f1b1000ae2031b9~mv2.jpg" alt="Waypoint paths"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_ed0dad4190f04255a0b82af8ab9b035e~mv2.jpg/v1/crop/x_0,y_229,w_720,h_912/fill/w_231,h_293,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_ed0dad4190f04255a0b82af8ab9b035e~mv2.jpg" alt="Physical output"/>
+      </div>
+
+      <blockquote>What surprised me most was how much the handwriting improved when I switched from linear waypoint interpolation to cubic splines. The letter forms went from looking like they were drawn with a ruler to something that actually resembled natural handwriting — and all I changed was the interpolation method.</blockquote>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">MediaPipe</span><span class="tag">MLP Classifier</span>
+        <span class="tag">ASL Recognition</span><span class="tag">Spline Trajectory</span><span class="tag">OpenCV</span>
+      </div>
+    </div>
+
+    <nav class="proj-nav">
+      <a href="anytime-d-star.html" class="pnav">
+        <span class="pnav__dir">← Previous</span>
+        <span class="pnav__name">Modified Anytime D*</span>
+      </a>
+      <a href="feeding-robot.html" class="pnav pnav--next">
+        <span class="pnav__dir">Next →</span>
+        <span class="pnav__name">Assistive Feeding Robot</span>
+      </a>
+    </nav>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <a href="index.html" class="footer__logo">Ahilesh<span>.</span></a>
+    <p class="footer__meta">USA &nbsp;&middot;&nbsp; ahileshram2610@gmail.com</p>
+    <ul class="footer__links">
+      <li><a href="https://www.linkedin.com/in/ahilesh-ram-14b94921a" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:ahileshram2610@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CREST — Ahilesh Rajaram</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+<div class="stripe"></div>
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav__logo">Ahilesh<span>.</span></a>
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav__drop">
+        <a href="index.html#projects">Projects <svg class="caret" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="2,3 5,7 8,3"/></svg></a>
+        <ul class="nav__drop-menu">
+          <li><a href="bionic-arm.html">Bionic Arm</a></li>
+          <li><a href="visual-servoing.html">Visual Servoing</a></li>
+          <li><a href="buoyancy-robot.html">Buoyancy Robot</a></li>
+          <li><a href="anytime-d-star.html">Modified Anytime D*</a></li>
+          <li><a href="robot-handwriting.html">Robot Handwriting</a></li>
+          <li><a href="feeding-robot.html">Feeding Robot</a></li>
+          <li><a href="crest.html">CREST Exoskeleton</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="bionic-arm.html">Bionic Arm</a>
+  <a href="visual-servoing.html">Visual Servoing</a>
+  <a href="buoyancy-robot.html">Buoyancy Robot</a>
+  <a href="anytime-d-star.html">Modified Anytime D*</a>
+  <a href="robot-handwriting.html">Robot Handwriting</a>
+  <a href="feeding-robot.html">Feeding Robot</a>
+  <a href="crest.html">CREST Exoskeleton</a>
+</div>
+
+<div class="proj-header">
+  <div class="wrap-sm">
+    <a href="index.html" class="proj-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg> All Projects</a>
+    <div class="proj-chips">
+      <span class="proj-cat">Exoskeleton</span>
+      <span class="proj-cat">Wearable Robotics</span>
+      <span class="proj-cat">Biomechanics</span>
+      <a href="https://github.com/Ahilesh26/CREST-Cable-Routed-Ergonomic-Shoulder-Torque-support-" class="gh-link" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        View on GitHub
+      </a>
+    </div>
+    <h1 class="proj-title">CREST — Cable-Routed Ergonomic Shoulder Torque Support</h1>
+  </div>
+</div>
+
+<div class="proj-body">
+  <div class="wrap-sm">
+    <div class="prose">
+
+      <p>This is the project I'm most proud of — and the one that took the most out of me. CREST is a passive shoulder exoskeleton designed to reduce the muscular load on the deltoid and supraspinatus during sustained overhead and elevated-arm work. It doesn't have motors. It doesn't need batteries. It works by routing a Bowden cable from a torsion spring at the torso frame, up across the shoulder, and down the upper arm — storing elastic energy when the arm drops and releasing it as assistive torque when the arm rises.</p>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_9f841da65fa24b14af9044c783257e93~mv2.jpeg/v1/fill/w_266,h_300,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_9f841da65fa24b14af9044c783257e93~mv2.jpeg" alt="Design sketch"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_8ea75b8f248b497185f6e3649fc7f4d1~mv2.png/v1/fill/w_323,h_300,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_8ea75b8f248b497185f6e3649fc7f4d1~mv2.png" alt="CAD model"/>
+      </div>
+
+      <h2>The Problem Worth Solving</h2>
+
+      <p>Work-related musculoskeletal disorders of the shoulder are the second most common occupational injury in manufacturing, construction, and automotive assembly. Holding your arm elevated above 60° for sustained periods loads the rotator cuff muscles in a position where they are both maximally contracted and mechanically disadvantaged. In the United States alone, shoulder injuries account for an estimated $7 billion in workers' compensation claims annually.</p>
+
+      <p>Powered exoskeletons address this — they work well, cost $15,000–$40,000 per unit, require charging, and break down in the field. The research question CREST answers: how much of the assistive torque of a powered system can you replicate with a well-designed passive mechanism?</p>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_11dd35161443410baf7eec3f206e6799~mv2.png/v1/fill/w_205,h_331,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_11dd35161443410baf7eec3f206e6799~mv2.png" alt="Torque requirements"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_ee6b6af307214455910efb2d038a8fc6~mv2.png/v1/fill/w_282,h_331,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_ee6b6af307214455910efb2d038a8fc6~mv2.png" alt="Cable force diagram"/>
+      </div>
+
+      <h2>How It Works</h2>
+
+      <p>The torso frame is a rigid vest worn over the upper body, anchored at the waist and shoulder straps to distribute load without restricting breathing. A torsion spring housing sits between the shoulder blades. A Bowden cable exits this housing, routes over a pulley mounted on the shoulder pivot, and terminates at a cuff wrapped around the upper arm.</p>
+
+      <p>When the arm hangs at rest, the cable is slack — the spring is unloaded and the device exerts no force. As the arm elevates, the cable tightens and begins tensioning the spring. Meaningful resistive force builds in the 45–90° elevation range — precisely where the deltoid is working hardest. At full elevation (above 120°) the geometry causes the moment arm to shorten, reducing assistive torque as the deltoid naturally gains mechanical advantage.</p>
+
+      <div class="fig">
+        <img src="https://static.wixstatic.com/media/3a5ee8_aac9b528615c4b3d902be3ad85a7cbbf~mv2.png/v1/fill/w_484,h_417,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_aac9b528615c4b3d902be3ad85a7cbbf~mv2.png" alt="Force transmission diagram"/>
+      </div>
+
+      <h2>The Part I Didn't Expect to Work So Well</h2>
+
+      <p>The Bowden cable routing. I was worried that friction in the cable housing would absorb too much spring force before it reached the arm cuff. Using a PTFE-lined housing and keeping the routing radius above 80mm at every bend, cable transmission efficiency measured at 91–94% across the full range of motion — better than several published exoskeleton designs using more complex parallel-linkage mechanisms.</p>
+
+      <blockquote>"The elegance of CREST is not in its complexity — it's in its restraint. Every component that isn't there is a component that can't break."</blockquote>
+
+      <div class="fig3">
+        <img src="https://static.wixstatic.com/media/3a5ee8_a9f830bb3d2f44438215ab80be711473~mv2.jpeg/v1/fill/w_319,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_a9f830bb3d2f44438215ab80be711473~mv2.jpeg" alt="Prototype front"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_6af01131b0594873af023095522a6c1f~mv2.jpeg/v1/fill/w_319,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_6af01131b0594873af023095522a6c1f~mv2.jpeg" alt="Prototype side"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_ab641516a5c1498f8ce3a5d2128a9211~mv2.jpeg/v1/fill/w_309,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_ab641516a5c1498f8ce3a5d2128a9211~mv2.jpeg" alt="Prototype rear"/>
+      </div>
+
+      <h2>The Constant Battle</h2>
+
+      <p>Fit. The human shoulder is not a simple ball-and-socket joint — it's a complex of four joints moving in coordinated patterns, and the glenohumeral joint centre migrates during elevation. Every time I strapped the early prototype onto a test subject and asked them to raise their arm, I could feel the device fighting them in the last 20° of elevation.</p>
+
+      <p>The fix was a floating shoulder pivot — a two-degree-of-freedom joint that allows the frame's pivot point to translate slightly as well as rotate, tracking the migration of the glenohumeral centre. After that change, every test subject reported that the device felt natural rather than restrictive.</p>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_eaf68161796845a4ad22f1f67a5504fc~mv2.jpeg/v1/fill/w_248,h_331,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_eaf68161796845a4ad22f1f67a5504fc~mv2.jpeg" alt="Build process"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_346a0c6f6af540fbb0eb5de31478a7af~mv2.jpeg/v1/fill/w_269,h_331,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_346a0c6f6af540fbb0eb5de31478a7af~mv2.jpeg" alt="Floating pivot assembly"/>
+      </div>
+
+      <h2>What the Prototype Validated</h2>
+
+      <p>Validation used surface EMG electrodes on the anterior and middle deltoid during a standardised task — holding a 1kg weight at 90° elevation for 30 seconds. With CREST, measured deltoid activation dropped by an average of 31% across five test subjects. Peak muscle activation during the most demanding phase of elevation dropped by 38%. Both figures are within the range reported for commercial passive exoskeletons at significantly higher weight and cost.</p>
+
+      <blockquote>A 31% reduction in deltoid activation over an 8-hour shift isn't just a number. For a manufacturing worker doing overhead assembly all day, that's the difference between going home tired and going home injured.</blockquote>
+
+      <div class="fig2">
+        <img src="https://static.wixstatic.com/media/3a5ee8_6d7a9342a6934d958e61bb12cab170fd~mv2.png/v1/fill/w_271,h_408,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_6d7a9342a6934d958e61bb12cab170fd~mv2.png" alt="EMG validation data"/>
+        <img src="https://static.wixstatic.com/media/3a5ee8_90df0360f870434bb5585360ebbea07a~mv2.png/v1/fill/w_330,h_417,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_90df0360f870434bb5585360ebbea07a~mv2.png" alt="Assistive torque vs elevation"/>
+      </div>
+
+      <h2>What Comes Next</h2>
+
+      <p>The current prototype is a proof-of-concept sized for one body type. The most pressing next step is a quick-release sizing system that lets the torso frame and arm cuff adapt to a range of body sizes without tools. The second priority is spring exchangeability — a modular spring cartridge so CREST can be tuned to different job requirements at the start of a shift.</p>
+
+      <div class="tags">
+        <span class="tag">Passive Exoskeleton</span><span class="tag">Bowden Cable</span>
+        <span class="tag">EMG Validation</span><span class="tag">Biomechanics</span>
+        <span class="tag">SolidWorks</span><span class="tag">Occupational Health</span>
+      </div>
+    </div>
+
+    <nav class="proj-nav">
+      <a href="feeding-robot.html" class="pnav">
+        <span class="pnav__dir">← Previous</span>
+        <span class="pnav__name">Assistive Feeding Robot</span>
+      </a>
+      <div></div>
+    </nav>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <a href="index.html" class="footer__logo">Ahilesh<span>.</span></a>
+    <p class="footer__meta">USA &nbsp;&middot;&nbsp; ahileshram2610@gmail.com</p>
+    <ul class="footer__links">
+      <li><a href="https://www.linkedin.com/in/ahilesh-ram-14b94921a" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:ahileshram2610@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

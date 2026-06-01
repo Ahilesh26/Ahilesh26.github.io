@@ -1,37 +1,335 @@
----
-layout: default
-title: Finding The Way Home
-cover: 'assets/images/cover1.jpg'
-class: 'home-template'
-navigation: True
-logo: 'assets/images/ghost.png'
-current: home
----
-<!-- < default -->
-<!-- The tag above means - insert everything in this file into the [body] of the default.hbs template -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ahilesh Rajaram — Robotics Engineer</title>
+  <meta name="description" content="Portfolio of Ahilesh Rajaram — Robotics Engineer based in Boston, MA."/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
 
-<!-- The big featured header  -->
-<header class="main-header {% if page.cover %}"
-        style="background-image: url({{ site.baseurl }}{{ page.cover }}) {% else %}no-cover{% endif %}">
-    <nav class="main-nav overlay clearfix">
-        {% if page.logo %}<a class="blog-logo" href="{{ site.baseurl }}"><img src="{{ site.baseurl }}{{ page.logo }}" alt="Blog Logo" /></a>{% endif %}
-        {% if page.navigation %}
-            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
-        {% endif %}
-    </nav>
-    <div class="vertical">
-        <div class="main-header-content inner">
-            <h1 class="page-title">{{ site.name }}</h1>
-            <h2 class="page-description">{{ site.description }}</h2>
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav__logo">Ahilesh<span>.</span></a>
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav__drop">
+        <a href="#projects">
+          Projects
+          <svg class="caret" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="2,3 5,7 8,3"/></svg>
+        </a>
+        <ul class="nav__drop-menu">
+          <li><a href="bionic-arm.html">Bionic Arm</a></li>
+          <li><a href="visual-servoing.html">Visual Servoing</a></li>
+          <li><a href="buoyancy-robot.html">Buoyancy Robot</a></li>
+          <li><a href="anytime-d-star.html">Modified Anytime D*</a></li>
+          <li><a href="robot-handwriting.html">Robot Handwriting</a></li>
+          <li><a href="feeding-robot.html">Feeding Robot</a></li>
+          <li><a href="crest.html">CREST Exoskeleton</a></li>
+        </ul>
+      </li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav__burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav__mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="bionic-arm.html">Bionic Arm</a>
+  <a href="visual-servoing.html">Visual Servoing</a>
+  <a href="buoyancy-robot.html">Buoyancy Robot</a>
+  <a href="anytime-d-star.html">Modified Anytime D*</a>
+  <a href="robot-handwriting.html">Robot Handwriting</a>
+  <a href="feeding-robot.html">Feeding Robot</a>
+  <a href="crest.html">CREST Exoskeleton</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__left">
+      <p class="hero__badge">Robotics &amp; Automation Engineer</p>
+      <h1 class="hero__name" style="margin-bottom: 1.5rem;">
+        Ahilesh
+        <em>Rajaram</em>
+      </h1>
+      <p class="hero__role">Robotics &amp; Automation &nbsp;&middot;&nbsp; Mechatronics &nbsp;&middot;&nbsp; Wearable Systems</p>
+      <div class="hero__bio">
+        <p>I build robots and the systems that control them — from concept and simulation through to physical hardware that actually works in the real world. My interest is in the gap between the clean theory and the messy reality: the constraints you only discover when something is bolted together and switched on.</p>
+        <p>When I'm not in the lab or the workshop I'm on the basketball court. High performance in both fields comes down to the same thing: rigorous preparation, fast iteration, and the composure to stay systematic under pressure.</p>
+      </div>
+
+      <div class="hero__pillars">
+        <div class="pillar-item">
+          <button class="pillar-toggle" aria-expanded="false">
+            <span class="pillar-label">Industrial Automation</span>
+            <svg class="pillar-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6,9 12,15 18,9"/></svg>
+          </button>
+          <div class="pillar-body">
+            <p>I design and commission PLC-driven control architectures for heavy-scale manufacturing — working across Allen-Bradley and Siemens platforms to build Ladder Logic programs, configure HMI/SCADA systems, and integrate industrial networks using protocols like OPC-UA. On the factory floor I've learned how automation decisions cascade: a poorly-tuned loop or misconfigured network segment can affect an entire production line. I approach these systems with a focus on reliability, diagnostics, and long-term maintainability over short-term cleverness.</p>
+          </div>
         </div>
+        <div class="pillar-item">
+          <button class="pillar-toggle" aria-expanded="false">
+            <span class="pillar-label">Intelligent Mechatronics</span>
+            <svg class="pillar-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6,9 12,15 18,9"/></svg>
+          </button>
+          <div class="pillar-body">
+            <p>My mechatronics work lives at the intersection of mechanical design, embedded systems, and software. I develop autonomous robotic workcells using ROS 2 — integrating perception pipelines, motion planning with MoveIt 2, and real hardware including UR5e arms, Fanuc, and Denso controllers. I've validated systems in simulation before deploying to hardware, and I care about the full stack: from the CAD geometry of an end-effector to the control law running on it. The goal is always a system that handles the unexpected gracefully, not just the nominal case cleanly.</p>
+          </div>
+        </div>
+        <div class="pillar-item">
+          <button class="pillar-toggle" aria-expanded="false">
+            <span class="pillar-label">Biomechanics &amp; Wearables</span>
+            <svg class="pillar-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6,9 12,15 18,9"/></svg>
+          </button>
+          <div class="pillar-body">
+            <p>My wearable robotics work is driven by a straightforward belief: assistive technology should conform to the human body, not the other way around. I've designed and validated passive exoskeletons, bionic prosthetics, and assistive feeding systems — using SolidWorks and Abaqus for structural analysis and OpenSim and Mokka for biomechanical modelling. Safety and physical human-robot interaction are central to everything in this space. I use impedance and admittance control frameworks because they let the robot respond to the person rather than imposing fixed trajectories on them.</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero__actions">
+        <a href="mailto:ahileshram2610@gmail.com" class="hero__cta">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          Get in touch
+        </a>
+        <a href="https://www.linkedin.com/in/ahilesh-ram-14b94921a" class="hero__social" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://github.com/Ahilesh26" class="hero__social" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+      </div>
     </div>
-    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
-</header>
+    <div class="hero__photo-col">
+      <div class="hero__photo-frame">
+        <img
+          src="https://static.wixstatic.com/media/3a5ee8_5cce4ed460b444fcae5325a1d74f44b4~mv2.jpg/v1/crop/x_5,y_293,w_765,h_819/fill/w_444,h_475,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_5cce4ed460b444fcae5325a1d74f44b4~mv2.jpg"
+          alt="Ahilesh Rajaram"
+          class="hero__photo"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- The main content area on the homepage -->
-<main id="content" class="content" role="main">
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Selected Work</p>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">Engineering work spanning robotics, mechatronics, and human-centred systems.</p>
+    </div>
+    <div class="grid">
+      <a href="bionic-arm.html" class="card">
+        <img class="card__img" src="https://static.wixstatic.com/media/3a5ee8_8f0e3e83853e4a19bcf01b3891912891~mv2.png/v1/fill/w_291,h_294,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_8f0e3e83853e4a19bcf01b3891912891~mv2.png" alt="Bionic Arm" loading="lazy"/>
+        <div class="card__body">
+          <div class="card__tag">Computer Vision · Prosthetics</div>
+          <div class="card__title">Computer Vision Controlled Bionic Arm</div>
+        </div>
+      </a>
+      <a href="visual-servoing.html" class="card">
+        <img class="card__img" src="https://static.wixstatic.com/media/3a5ee8_b5c9f50b4a96437ca37467efed441f57~mv2.png/v1/fill/w_291,h_294,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_b5c9f50b4a96437ca37467efed441f57~mv2.png" alt="Visual Servoing" loading="lazy"/>
+        <div class="card__body">
+          <div class="card__tag">Simulation · CNC Automation</div>
+          <div class="card__title">Visual Servoing Simulation for Automated Part Handling</div>
+        </div>
+      </a>
+      <a href="buoyancy-robot.html" class="card">
+        <img class="card__img" src="https://static.wixstatic.com/media/3a5ee8_e664f933b42e49b6910870b30eec4703~mv2.png/v1/fill/w_291,h_294,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_e664f933b42e49b6910870b30eec4703~mv2.png" alt="Buoyancy Robot" loading="lazy"/>
+        <div class="card__body">
+          <div class="card__tag">Underwater Robotics · Fluid Mechanics</div>
+          <div class="card__title">Articulated Underwater Buoyancy Robot</div>
+        </div>
+      </a>
+      <a href="anytime-d-star.html" class="card">
+        <img class="card__img" src="https://static.wixstatic.com/media/3a5ee8_56cf6c65ad154556881147a8dadaf452~mv2.jpg/v1/fill/w_291,h_294,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screenshot%202025-02-21%20093612_edited.jpg" alt="Anytime D*" loading="lazy"/>
+        <div class="card__body">
+          <div class="card__tag">Path Planning · Algorithms</div>
+          <div class="card__title">Modified Anytime D* Algorithm</div>
+        </div>
+      </a>
+      <a href="robot-handwriting.html" class="card">
+        <img class="card__img" src="https://static.wixstatic.com/media/3a5ee8_6f97c9a956e64a598061375cef5b8075~mv2.png/v1/fill/w_291,h_294,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3a5ee8_6f97c9a956e64a598061375cef5b8075~mv2.png" alt="Robot Handwriting" loading="lazy"/>
+        <div class="card__body">
+          <div class="card__tag">Sign Language · Computer Vision</div>
+          <div class="card__title">Robot Handwriting for Sign Language</div>
+        </div>
+      </a>
+      <a href="feeding-robot.html" class="card">
+        <img class="card__img" src="https://static.wixstatic.com/media/3a5ee8_7f858c217dde43e388708d3a616b0beb~mv2.png/v1/fill/w_291,h_294,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screenshot%20from%202025-12-10%2017-18-51.png" alt="Feeding Robot" loading="lazy"/>
+        <div class="card__body">
+          <div class="card__tag">Assistive Robotics · Impedance Control</div>
+          <div class="card__title">Assistive Feeding Robot with Impedance Safety</div>
+        </div>
+      </a>
+      <a href="crest.html" class="card">
+        <img class="card__img" src="https://static.wixstatic.com/media/3a5ee8_25615a0ec55d4603a7c174ce34e1403e~mv2.jpeg/v1/fill/w_291,h_294,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/WhatsApp%20Image%202026-04-15%20at%2011_11_18%20PM%20(6).jpeg" alt="CREST" loading="lazy"/>
+        <div class="card__body">
+          <div class="card__tag">Exoskeleton · Wearable Robotics</div>
+          <div class="card__title">CREST — Cable-Routed Ergonomic Shoulder Torque Support</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <!-- The tag below includes the post loop - partials/loop.hbs -->
-    {% include loop.html %}
+<section class="skills" id="skills">
+  <div class="wrap">
+    <p class="eyebrow">Expertise</p>
+    <h2 class="section-title">Skills &amp; Tools</h2>
+    <p class="section-sub">Click a category to expand.</p>
 
-</main>
+    <div class="skill-tabs">
+      <button class="skill-tab" data-panel="robotics">
+        Robotics &amp; Frameworks
+        <svg class="skill-caret" width="10" height="10" viewBox="0 0 10 10" fill="none"><polyline points="2,3 5,7 8,3" stroke="currentColor" stroke-width="1.8"/></svg>
+      </button>
+      <button class="skill-tab" data-panel="perception">
+        Perception &amp; Control
+        <svg class="skill-caret" width="10" height="10" viewBox="0 0 10 10" fill="none"><polyline points="2,3 5,7 8,3" stroke="currentColor" stroke-width="1.8"/></svg>
+      </button>
+      <button class="skill-tab" data-panel="industrial">
+        Industrial Automation
+        <svg class="skill-caret" width="10" height="10" viewBox="0 0 10 10" fill="none"><polyline points="2,3 5,7 8,3" stroke="currentColor" stroke-width="1.8"/></svg>
+      </button>
+      <button class="skill-tab" data-panel="mechatronics">
+        Mechatronics &amp; Embedded
+        <svg class="skill-caret" width="10" height="10" viewBox="0 0 10 10" fill="none"><polyline points="2,3 5,7 8,3" stroke="currentColor" stroke-width="1.8"/></svg>
+      </button>
+      <button class="skill-tab" data-panel="design">
+        Design &amp; Programming
+        <svg class="skill-caret" width="10" height="10" viewBox="0 0 10 10" fill="none"><polyline points="2,3 5,7 8,3" stroke="currentColor" stroke-width="1.8"/></svg>
+      </button>
+    </div>
+
+    <div class="skill-panel-wrap">
+      <div class="skill-panel" id="panel-robotics">
+        <span class="tag">ROS 2</span>
+        <span class="tag">Gazebo</span>
+        <span class="tag">Gazebo Harmonic</span>
+        <span class="tag">MoveIt 2</span>
+        <span class="tag">RViz</span>
+        <span class="tag">Kinematics</span>
+        <span class="tag">Linux (Ubuntu)</span>
+        <span class="tag">Git</span>
+        <span class="tag">UR5e</span>
+        <span class="tag">HRI</span>
+        <span class="tag">Gesture Recognition</span>
+      </div>
+      <div class="skill-panel" id="panel-perception">
+        <span class="tag">Computer Vision</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">MediaPipe</span>
+        <span class="tag">TensorFlow</span>
+        <span class="tag">Path Planning</span>
+        <span class="tag">PID Control</span>
+        <span class="tag">Impedance Control</span>
+        <span class="tag">Force / Torque Control</span>
+        <span class="tag">MATLAB / Simulink</span>
+        <span class="tag">Control Systems Toolbox</span>
+        <span class="tag">LabVIEW</span>
+        <span class="tag">Forward &amp; Inverse Kinematics</span>
+        <span class="tag">Trajectory Planning</span>
+        <span class="tag">Servo &amp; Actuator Control</span>
+        <span class="tag">UR Controls</span>
+        <span class="tag">Fanuc Controls</span>
+        <span class="tag">Denso Controls</span>
+      </div>
+      <div class="skill-panel" id="panel-industrial">
+        <span class="tag">PLC — Allen-Bradley (Studio 5000)</span>
+        <span class="tag">PLC — Siemens (TIA Portal)</span>
+        <span class="tag">Ladder Logic</span>
+        <span class="tag">HMI / SCADA</span>
+        <span class="tag">Fanuc / DENSO Controllers</span>
+        <span class="tag">CNC Programming</span>
+        <span class="tag">Hydraulics</span>
+        <span class="tag">Pneumatics</span>
+        <span class="tag">Network Architecture</span>
+        <span class="tag">OPC-UA</span>
+      </div>
+      <div class="skill-panel" id="panel-mechatronics">
+        <span class="tag">Arduino</span>
+        <span class="tag">Raspberry Pi</span>
+        <span class="tag">ESP32</span>
+        <span class="tag">Sensor Fusion</span>
+        <span class="tag">Multi-motor Coordination</span>
+        <span class="tag">Actuator Synchronization</span>
+        <span class="tag">Micro-servos</span>
+        <span class="tag">Servo Motors (SG90, Dynamixel)</span>
+        <span class="tag">Force / Torque Sensors</span>
+        <span class="tag">IMU / Gyroscope</span>
+        <span class="tag">Pressure Transducers</span>
+        <span class="tag">Encoders</span>
+        <span class="tag">PWM &amp; Serial Comms</span>
+        <span class="tag">PCB Prototyping</span>
+        <span class="tag">3D Printing (FDM)</span>
+        <span class="tag">Wiring &amp; Soldering</span>
+        <span class="tag">Rapid Prototyping</span>
+      </div>
+      <div class="skill-panel" id="panel-design">
+        <span class="tag">Python</span>
+        <span class="tag">MATLAB</span>
+        <span class="tag">C++ (basic)</span>
+        <span class="tag">SolidWorks</span>
+        <span class="tag">Fusion 360</span>
+        <span class="tag">AutoCAD</span>
+        <span class="tag">OpenSim</span>
+        <span class="tag">Abaqus</span>
+        <span class="tag">Mokka</span>
+        <span class="tag">FEA (SolidWorks Simulation)</span>
+        <span class="tag">Kinematic Simulation</span>
+        <span class="tag">Tolerance &amp; GD&amp;T</span>
+        <span class="tag">Assembly Design</span>
+        <span class="tag">Bill of Materials (BOM)</span>
+        <span class="tag">Rapid Prototyping</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap-sm">
+    <p class="eyebrow">Get In Touch</p>
+    <h2 class="section-title">Contact</h2>
+    <p class="section-sub">For inquiries, collaborations, or to discuss projects — reach out directly.</p>
+    <form class="contact__form" id="contactForm" action="mailto:ahileshram2610@gmail.com" method="get">
+      <div class="row2">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required/>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required/>
+        </div>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
+      </div>
+      <div>
+        <button type="submit" class="btn-send">Send Message</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <a href="index.html" class="footer__logo">Ahilesh<span>.</span></a>
+    <p class="footer__meta">USA &nbsp;&middot;&nbsp; ahileshram2610@gmail.com</p>
+    <ul class="footer__links">
+      <li><a href="https://www.linkedin.com/in/ahilesh-ram-14b94921a" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:ahileshram2610@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
